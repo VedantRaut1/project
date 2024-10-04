@@ -1,0 +1,64 @@
+/* public/therapists.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+.therapist-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.therapist-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.therapist-item:last-child {
+  border-bottom: none;
+}
+
+.therapist-name {
+  font-size: 1.2em;
+  color: #333; /* Changed to a dark gray */
+}
+
+.therapist-specialization {
+  font-size: 1em;
+  color: #555;
+}
+
+/* Updated styling for the book link */
+.book-link {
+  text-decoration: none;
+  color: #000; /* Black color */
+  font-weight: bold;
+  border: 1px solid #000; /* Black border */
+  border-radius: 4px;
+  padding: 8px 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.book-link:hover {
+  background-color: #000; /* Black background on hover */
+  color: #fff; /* White text color on hover */
+}

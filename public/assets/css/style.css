@@ -1,0 +1,10 @@
+.custom-button {
+  font-size: 18px; /* Adjust font size */
+  border: none; /* Remove border */
+  transition: background-color 0.3s; /* Smooth transition effect */
+}
+
+.custom-button:hover {
+  background-color: #333; /* Darker black for hover effect */
+  color: white; /* Change text color on hover */
+}
