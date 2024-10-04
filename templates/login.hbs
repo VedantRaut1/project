@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="../src/script.js"></script>
+</head>
+<body>
+
+    <form action="/login" method="post">
+        <h1>Login</h1>
+        <input placeholder="Email" name="email" type="email" required>
+        <br>
+        <input placeholder="Password" name="password" type="password" required>
+        <br>
+        <input class="sub" type="submit" value="Login">
+        <h3>Don't have an account?</h3>
+        <a href="/signup">Create a new account</a>
+    {{#if error}} <!-- Check if there is an error -->
+        <p style="color: red;">{{error}}</p> <!-- Display the error message in red -->
+    {{/if}}
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapists</title>
+    <link rel="stylesheet" href="/css/therapists.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Our Therapists</h1>
+        <ul class="therapist-list">
+            {{#each therapists}}
+                <li class="therapist-item">
+                    <span class="therapist-name">{{this.name}}</span>
+                    <span class="therapist-specialization">{{this.specialization}}</span>
+                    <a href="/book/{{this.id}}" class="book-link">Book an Appointment</a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</body>
+</html>

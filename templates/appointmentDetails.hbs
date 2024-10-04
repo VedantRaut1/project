@@ -1,0 +1,10 @@
+<h2>Your Appointments</h2>
+<ul>
+    {{#each appointments}}
+    <li>
+        <p>Therapist: {{this.therapistName}}</p>
+        <p>Date: {{this.date}}</p>
+        <p>Time: {{this.time}}</p>
+    </li>
+    {{/each}}
+</ul>

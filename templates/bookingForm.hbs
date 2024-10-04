@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const dateInput = document.getElementById('date');
+    const timeInput = document.getElementById('time');
+
+    const timeSlots = generateTimeSlots();
+
+    // Populate time slots initially
+    updateTimeOptions();
+
+    // Event listener for date change
+    dateInput.addEventListener('change', updateTimeOptions);
+
+    function generateTimeSlots() {
+        const slots = [];
+        for (let hour = 10; hour < 17; hour++) {
+            for (let minute = 0; minute < 60; minute += 30) {
+                const time = new Date();
+                time.setHours(hour, minute, 0, 0);
+                slots.push(time.toTimeString().slice(0, 5)); // Format HH:MM
+            }
+        }
+        return slots;
+    }
+
+    function updateTimeOptions() {
+        const selectedDate = new Date(dateInput.value);
+        const now = new Date();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        let timeOptions = [];
+
+        // Check if the selected date is valid
+        if (selectedDate >= today) {
+            timeOptions = timeSlots.filter(slot => {
+                const [hours, minutes] = slot.split(':').map(Number);
+                const slotTime = new Date(selectedDate);
+                slotTime.setHours(hours, minutes, 0, 0);
+
+                return slotTime >= now;
+            });
+        }
+
+        // Clear existing options
+        timeInput.innerHTML = '';
+
+        // Add new options
+        timeOptions.forEach(time => {
+            const option = document.createElement('option');
+            option.value = time;
+            option.textContent = time;
+            timeInput.appendChild(option);
+        });
+    }
+});
+</script>
+
+<form action="/book" method="POST">
+
+
+    <!-- Display therapist's specialization and photo -->
+   <h1>Booking Appointment with {{therapistName}}</h1>
+
+
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Select Time:</label>
+    <select id="time" name="time" required>
+        <!-- Time options will be dynamically populated here -->
+    </select>
+
+    <input type="email" name="userEmail" placeholder="Confirm Your Email" required>
+    <input class="sub" type="submit" value="Book Appointment">
+
+    {{#if message}}
+        <p style="color:red;">{{message}}</p>
+    {{/if}}
+</form>
+
+</body>
+</html>
